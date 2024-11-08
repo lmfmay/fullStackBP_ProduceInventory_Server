@@ -10,6 +10,8 @@ router.route('/')
     .get(produceControllers.getAllProduce)
 
 router.route('/:id')
+//read route
+    .get(produceControllers.getOneProduce)
 //update route
     .put(produceControllers.updateOneProduce)
 //delete route

@@ -23,6 +23,17 @@ async function getAllProduce(req, res){
         res.status(500).json({msg: 'Server error'})
     }
 }
+
+async function getOneProduce(req, res){
+    try {
+        let oneProduce = await Produce.findById(req.params.id);
+        res.json(oneProduce)
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({msg: 'Server error'})
+    }
+}
+
 async function updateOneProduce(req, res){
     try {
         let updatedProduce = await Produce.findByIdAndUpdate(req.params.id, req.body, {new: true}); //new:true sends back newly updated produce instead of the old one.
@@ -53,4 +64,4 @@ async function seedDB(req,res){
     }
 }
 
-export default {createProduce, getAllProduce, updateOneProduce, deleteOneProduce, seedDB}
+export default {createProduce, getAllProduce, getOneProduce, updateOneProduce, deleteOneProduce, seedDB}
